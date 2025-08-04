@@ -1,1 +1,1 @@
-# java-metrics-atatus-newrelic-test
+# java-metrics-at-nr-test
