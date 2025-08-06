@@ -9,8 +9,8 @@ basicConfig(level="INFO", format="%(asctime)s - %(levelname)s - %(message)s") # 
 getLogger("httpx").setLevel("ERROR")  # Suppress httpx logs
 
 class Count:
-    def __init__(self, value: int):
-        self.value = value
+    def __init__(self, init_value: int):
+        self.value = init_value
 
     def increment(self):
         self.value += 1
@@ -174,7 +174,7 @@ async def main():
     start_time: datetime = datetime.now()
     log_info(f"Start Time: {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
 
-    TIME: int = 300 
+    TIME: int = 1800 
 
     seed()  # Initialize random number generator
 
