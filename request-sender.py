@@ -157,8 +157,8 @@ async def batch_of_test2(client: AsyncClient, batch_size: int, count: Count) -> 
 
 
 async def get_random_batch_size() -> int:
-    """Generate a random batch size between 1 and 10."""
-    return choice(range(1, 11))
+    """Generate a random batch size between 0 and 15."""
+    return choice(range(0, 15))
 
 
 async def send_batch(client: AsyncClient, count: Count) -> list:
