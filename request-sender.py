@@ -7,8 +7,20 @@ from logging import info, error , basicConfig, getLogger
 from random import randint, random, seed
 from secrets import choice
 from sys import exit
+from rich.progress import (
+    Progress,
+    SpinnerColumn,
+    BarColumn,
+    TextColumn,
+    TimeElapsedColumn,
+    TimeRemainingColumn,
+    TaskID
+)
+from rich.live import Live
 
-basicConfig(level="INFO", format="%(asctime)s - %(levelname)s - %(message)s") # Configure logging
+LOG_LEVEL: str = "CRITICAL"  # Set the desired log level
+
+basicConfig(level=LOG_LEVEL, format="%(asctime)s - %(levelname)s - %(message)s") # Configure logging
 getLogger("httpx").setLevel("ERROR")  # Suppress httpx logs
 
 def log_info(message: str) -> None:
@@ -209,6 +221,19 @@ async def send_to_exception(client: AsyncClient, wait_event: Event, count: Count
             await sleep(sleep_time)  
 
 
+async def update_progress(time: int, wait_event: Event, task_id: TaskID, progress: Progress) -> None:
+    log_info(f"Timer started for {time} seconds")
+    frame: float = 0.1
+    for _ in range(int(time / frame)):
+        await sleep(frame)
+        progress.update(task_id, advance=frame)
+        desc = await get_pbar_description(count)
+        progress.console.clear()
+        progress.console.print(desc)
+        progress.refresh()
+    else:
+        progress.update(task_id, completed= time)
+
 async def timer(time: int, wait_event: Event) -> None:
     log_info(f"Timer started for {time} seconds")
     await sleep(time)
@@ -281,47 +306,67 @@ async def log_data(count: Count, start_time: datetime) -> None:
 
     count.log_to_file(start_time, end_time, elapsed_str)
 
-
+async def get_pbar_description(count: Count) -> str:
+    return "\n".join([
+        f"Total Batch: {count.get_batch()}",
+        f"Total Requests: {count.get_total_request()}",
+        f"Failed Requests: {count.get_failed()}",
+        f"Endpoint Sleep: {count.get_sleep()}",
+        f"Endpoint Test1: {count.get_test1()}",
+        f"Endpoint Test2: {count.get_test2()}",
+        f"Endpoint Fail: {count.get_fail()}",
+        f"Endpoint Exception: {count.get_exception()}",
+    ])
 
 async def main(count: Count, start_time: datetime = None) -> None:
     
     log_info(f"Start Time: {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
 
-    TIME: int = 350
+    TIME: int = 5
 
     seed()  # Initialize random number generator
 
-    wait_event = Event()
+    wait_event = Event()  
 
-    create_task(timer(TIME, wait_event))
+    progress = Progress(
+        SpinnerColumn(),
+        BarColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        TimeElapsedColumn(),
+        TimeRemainingColumn(),
+    )
 
-    async with AsyncClient() as client :
+    task_id: TaskID = progress.add_task("Sending requests", total=TIME)
+    
+    with Live(progress, refresh_per_second=1) as pbar:
+        async with AsyncClient() as client:
+            create_task(timer(TIME, wait_event))
+            create_task(update_progress(TIME, wait_event, task_id, progress))
+            create_task(send_to_fail(client, wait_event, count))
+            create_task(send_to_exception(client, wait_event, count))    
 
-        create_task(send_to_fail(client, wait_event, count))
-        create_task(send_to_exception(client, wait_event, count))    
+            log_info("Starting to send batches of requests...")
 
-        log_info("Starting to send batches of requests...")
+            while not wait_event.is_set():
+                try:
+                    await send_batch(client, count)
+                    elapsed_time = datetime.now() - start_time
+                    elapsed_str = str(elapsed_time).split('.')[0]  # Remove microseconds
+                    log_info(f"\n@@@@@@@ Batch {count.get_batch()} Successful. Current requests count: {count.get_total_request()}, elapsed time: {elapsed_str}\n")
 
-        while not wait_event.is_set():
-            try:
-                await send_batch(client, count)
-                elapsed_time = datetime.now() - start_time
-                elapsed_str = str(elapsed_time).split('.')[0]  # Remove microseconds
-                log_info(f"\n@@@@@@@ Batch {count.get_batch()} Successful. Current requests count: {count.get_total_request()}, elapsed time: {elapsed_str}\n")
+                except Exception as e:
+                    log_error(f"(())(())Error in Batch {count.get_batch()}: {e}")
 
-            except Exception as e:
-                log_error(f"(())(())Error in Batch {count.get_batch()}: {e}")
+                finally:
+                    # Sleep for a short time to avoid overwhelming the server
+                    await sleep(.1)
+                    count.increment_batch()
 
-            finally:
-                # Sleep for a short time to avoid overwhelming the server
-                await sleep(.1)
-                count.increment_batch()
-
-        else:
-            log_info("Wait Event is set, stopping all tasks.")
-            log_info("======================================================")
-            await log_data(count, start_time)
-        
+            else:
+                log_info("Wait Event is set, stopping all tasks.")
+                log_info("======================================================")
+                await log_data(count, start_time)
+            
 
 if __name__ == "__main__":
     count: Count = Count(1)  # Initialize count with 1
