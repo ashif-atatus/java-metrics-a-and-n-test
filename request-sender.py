@@ -32,64 +32,31 @@ def log_error(message: str) -> None:
     error(message)
 
 class Count:
-    def __init__(self, init_value: int):
-        self.total_request = init_value
-        self.failed_request = 0
-        self.endpoint_sleep = 0
-        self.endpoint_test1 = 0
-        self.endpoint_test2 = 0
-        self.endpoint_fail = 0
-        self.endpoint_exception = 0
-        self.batch = 0
+    def __init__(self):
+        self.counts = {
+            "total_request": 0,
+            "failed_request": 0,
+            "endpoint_sleep": 0,
+            "endpoint_test1": 0,
+            "endpoint_test2": 0,
+            "endpoint_fail": 0,
+            "endpoint_exception": 0,
+            "batch": 0
+        }
 
+    def increment(self, key: str):
+        """Increment the count for a specific key."""
+        if key in self.counts:
+            self.counts[key] += 1
+        else:
+            raise KeyError(f"Invalid key: {key}")
     
-    def increment_total_request(self):
-        self.total_request += 1
-
-    def get_total_request(self) -> int:
-        return self.total_request
-
-    def increment_failed(self):
-        self.failed_request += 1
-
-    def get_failed(self) -> int:
-        return self.failed_request
-    
-    def increment_sleep(self):
-        self.endpoint_sleep += 1
-    
-    def get_sleep(self) -> int:
-        return self.endpoint_sleep
-    
-    def increment_test1(self):
-        self.endpoint_test1 += 1
-
-    def get_test1(self) -> int:
-        return self.endpoint_test1
-    
-    def increment_test2(self):
-        self.endpoint_test2 += 1
-
-    def get_test2(self) -> int:
-        return self.endpoint_test2
-    
-    def increment_fail(self):
-        self.endpoint_fail += 1
-
-    def get_fail(self) -> int:
-        return self.endpoint_fail
-    
-    def increment_exception(self):
-        self.endpoint_exception += 1
-
-    def get_exception(self) -> int:
-        return self.endpoint_exception
-    
-    def increment_batch(self):
-        self.batch += 1
-
-    def get_batch(self) -> int:
-        return self.batch
+    def get(self, key: str) -> int:
+        """Get the count for a specific key."""
+        if key in self.counts:
+            return self.counts[key]
+        else:
+            raise KeyError(f"Invalid key: {key}")
     
 
     def log_to_file(self, start_time: datetime, end_time: datetime, elapsed_str: str):
@@ -99,14 +66,14 @@ class Count:
             f.write(f"Start Time: {start_time.strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write(f"End Time: {end_time.strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write(f"Elapsed Time: {elapsed_str}\n")
-            f.write(f"Total Batches: {self.get_batch()}\n")
-            f.write(f"Total Requests: {self.get_total_request()}\n")
-            f.write(f"Failed Requests: {self.get_failed()}\n")
-            f.write(f"Endpoint Sleep Requests: {self.get_sleep()}\n")
-            f.write(f"Endpoint Test1 Requests: {self.get_test1()}\n")
-            f.write(f"Endpoint Test2 Requests: {self.get_test2()}\n")
-            f.write(f"Endpoint Fail Requests: {self.get_fail()}\n")
-            f.write(f"Endpoint Exception Requests: {self.get_exception()}\n\n")
+            f.write(f"Total Batches: {self.counts['batch']}\n")
+            f.write(f"Total Requests: {self.counts['total_request']}\n")
+            f.write(f"Failed Requests: {self.counts['failed_request']}\n")
+            f.write(f"Endpoint Sleep Requests: {self.counts['endpoint_sleep']}\n")
+            f.write(f"Endpoint Test1 Requests: {self.counts['endpoint_test1']}\n")
+            f.write(f"Endpoint Test2 Requests: {self.counts['endpoint_test2']}\n")
+            f.write(f"Endpoint Fail Requests: {self.counts['endpoint_fail']}\n")
+            f.write(f"Endpoint Exception Requests: {self.counts['endpoint_exception']}\n\n")
 
 
 
@@ -139,10 +106,10 @@ async def send_to_sleep(client: AsyncClient, count: Count, current_request_numbe
         log_info(f"##### {current_request_number}. Sleep request sent successfully with wait time: {wait_time} seconds")
     except Exception as e:
         log_error(f"===== {current_request_number}. Sleep request error: {e}")
-        count.increment_failed()
+        count.increment("failed_request")
     finally:
-        count.increment_total_request()
-        count.increment_sleep()
+        count.increment("total_request")
+        count.increment("endpoint_sleep")
 
 async def send_to_test1(client: AsyncClient, count: Count, current_request_number: int):
 
@@ -157,11 +124,11 @@ async def send_to_test1(client: AsyncClient, count: Count, current_request_numbe
             log_info(f"##### {current_request_number}. Test1 [POST] request sent successfully")
 
     except Exception as e:
-        count.increment_failed()
+        count.increment("failed_request")
         log_error(f"===== {current_request_number}. Test1 request error: {e}")
     finally:
-        count.increment_test1()
-        count.increment_total_request()
+        count.increment("endpoint_test1")
+        count.increment("total_request")
 
 
 async def send_to_test2(client: AsyncClient, count: Count, current_request_number: int):
@@ -178,10 +145,10 @@ async def send_to_test2(client: AsyncClient, count: Count, current_request_numbe
 
     except Exception as e:
         log_error(f"===== {current_request_number}. Test2 request error: {e}")
-        count.increment_failed()
+        count.increment("failed_request")
     finally:
-        count.increment_test2()
-        count.increment_total_request()
+        count.increment("endpoint_test2")
+        count.increment("total_request")
 
 
 async def send_to_fail(client: AsyncClient, wait_event: Event, count: Count):
@@ -189,17 +156,17 @@ async def send_to_fail(client: AsyncClient, wait_event: Event, count: Count):
     url: str = "http://localhost:5050/fail-request"
 
     while not wait_event.is_set():
-        current_request_number: int = count.get_total_request()
+        current_request_number: int = count.get("total_request")
         sleep_time: float = randint(5, 10)
         try:
             await get_request(client, url)
-            count.increment_fail()
+            count.increment("endpoint_fail")
             log_info(f"{current_request_number}. Fail request sent successfully")
         except Exception as e:
-            count.increment_failed()
+            count.increment("failed_request")
             log_error(f"===== {current_request_number}. Fail request error: {e}")
         finally:
-            count.increment_total_request()
+            count.increment("total_request")
             await sleep(sleep_time)
 
 
@@ -207,23 +174,23 @@ async def send_to_exception(client: AsyncClient, wait_event: Event, count: Count
     url: str = "http://localhost:5050/raise-exception"
 
     while not wait_event.is_set():
-        current_request_number: int = count.get_total_request()
+        current_request_number: int = count.get("total_request")
         sleep_time: float = randint(5, 10)
         try:
             await get_request(client, url)
-            count.increment_exception()
+            count.increment("endpoint_exception")
             log_info(f"{current_request_number}. Exception request sent successfully")
         except Exception as e:
-            count.increment_failed()
+            count.increment("failed_request")
             log_error(f"===== {current_request_number}. Exception request error: {e}")
         finally:
-            count.increment_total_request()
-            await sleep(sleep_time)  
+            count.increment("total_request")
+            await sleep(sleep_time)
 
 
-async def update_progress(time: int, wait_event: Event, task_id: TaskID, progress: Progress) -> None:
+async def update_progress(time: int, wait_event: Event, task_id: TaskID, progress: Progress, count: Count) -> None:
     log_info(f"Timer started for {time} seconds")
-    frame: float = 0.1
+    frame: float = 0.3
     for _ in range(int(time / frame)):
         await sleep(frame)
         progress.update(task_id, advance=frame)
@@ -247,7 +214,7 @@ async def batch_of_sleep(client: AsyncClient, batch_size: int, count: Count) -> 
     batch: list = []
 
     for _ in range(batch_size):
-        batch.append(send_to_sleep(client, count, count.get_total_request()))
+        batch.append(send_to_sleep(client, count, count.get("total_request")))
 
     return batch
 
@@ -257,8 +224,8 @@ async def batch_of_test1(client: AsyncClient, batch_size: int, count: Count) -> 
     batch: list = []
 
     for _ in range(batch_size):
-        batch.append(send_to_test1(client, count, count.get_total_request()))
-    
+        batch.append(send_to_test1(client, count, count.get("total_request")))
+
     return batch
 
 
@@ -268,7 +235,7 @@ async def batch_of_test2(client: AsyncClient, batch_size: int, count: Count) -> 
     batch: list = []
 
     for _ in range(batch_size):
-        batch.append(send_to_test2(client, count, count.get_total_request()))
+        batch.append(send_to_test2(client, count, count.get("total_request")))
 
     return batch
 
@@ -278,7 +245,7 @@ async def get_random_batch_size() -> int:
     return choice(range(0, 15))
 
 
-async def send_batch(client: AsyncClient, count: Count) -> list:
+async def send_batch(client: AsyncClient, count: Count) -> None:
 
     sleep_batch: list = await batch_of_sleep(client, await get_random_batch_size(), count)
     test1_batch: list = await batch_of_test1(client, await get_random_batch_size(), count)
@@ -295,34 +262,34 @@ async def log_data(count: Count, start_time: datetime) -> None:
     elapsed = end_time - start_time
     elapsed_str = str(elapsed).split('.')[0]
     log_info(f"Elapsed Time: {elapsed_str}")
-    
-    log_info(f"Total Requests: {count.get_total_request()}")
-    log_info(f"Failed Requests: {count.get_failed()}")
-    log_info(f"Endpoint Sleep Requests: {count.get_sleep()}")
-    log_info(f"Endpoint Test1 Requests: {count.get_test1()}")
-    log_info(f"Endpoint Test2 Requests: {count.get_test2()}")
-    log_info(f"Endpoint Fail Requests: {count.get_fail()}")
-    log_info(f"Endpoint Exception Requests: {count.get_exception()}")
+
+    log_info(f"Total Requests: {count.get('total_request')}")
+    log_info(f"Failed Requests: {count.get('failed_request')}")
+    log_info(f"Endpoint Sleep Requests: {count.get('endpoint_sleep')}")
+    log_info(f"Endpoint Test1 Requests: {count.get('endpoint_test1')}")
+    log_info(f"Endpoint Test2 Requests: {count.get('endpoint_test2')}")
+    log_info(f"Endpoint Fail Requests: {count.get('endpoint_fail')}")
+    log_info(f"Endpoint Exception Requests: {count.get('endpoint_exception')}")
 
     count.log_to_file(start_time, end_time, elapsed_str)
 
 async def get_pbar_description(count: Count) -> str:
     return "\n".join([
-        f"Total Batch: {count.get_batch()}",
-        f"Total Requests: {count.get_total_request()}",
-        f"Failed Requests: {count.get_failed()}",
-        f"Endpoint Sleep: {count.get_sleep()}",
-        f"Endpoint Test1: {count.get_test1()}",
-        f"Endpoint Test2: {count.get_test2()}",
-        f"Endpoint Fail: {count.get_fail()}",
-        f"Endpoint Exception: {count.get_exception()}",
+        f"Total Batch: {count.get('batch')}",
+        f"Total Requests: {count.get('total_request')}",
+        f"Failed Requests: {count.get('failed_request')}",
+        f"Endpoint Sleep: {count.get('endpoint_sleep')}",
+        f"Endpoint Test1: {count.get('endpoint_test1')}",
+        f"Endpoint Test2: {count.get('endpoint_test2')}",
+        f"Endpoint Fail: {count.get('endpoint_fail')}",
+        f"Endpoint Exception: {count.get('endpoint_exception')}",
     ])
 
 async def main(count: Count, start_time: datetime = None) -> None:
     
     log_info(f"Start Time: {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
 
-    TIME: int = 5
+    TIME: int = 500
 
     seed()  # Initialize random number generator
 
@@ -341,7 +308,7 @@ async def main(count: Count, start_time: datetime = None) -> None:
     with Live(progress, refresh_per_second=1) as pbar:
         async with AsyncClient() as client:
             create_task(timer(TIME, wait_event))
-            create_task(update_progress(TIME, wait_event, task_id, progress))
+            create_task(update_progress(TIME, wait_event, task_id, progress, count))
             create_task(send_to_fail(client, wait_event, count))
             create_task(send_to_exception(client, wait_event, count))    
 
@@ -352,15 +319,15 @@ async def main(count: Count, start_time: datetime = None) -> None:
                     await send_batch(client, count)
                     elapsed_time = datetime.now() - start_time
                     elapsed_str = str(elapsed_time).split('.')[0]  # Remove microseconds
-                    log_info(f"\n@@@@@@@ Batch {count.get_batch()} Successful. Current requests count: {count.get_total_request()}, elapsed time: {elapsed_str}\n")
+                    log_info(f"\n@@@@@@@ Batch {count.get('batch')} Successful. Current requests count: {count.get('total_request')}, elapsed time: {elapsed_str}\n")
 
                 except Exception as e:
-                    log_error(f"(())(())Error in Batch {count.get_batch()}: {e}")
+                    log_error(f"(())(())Error in Batch {count.get('batch')}: {e}")
 
                 finally:
                     # Sleep for a short time to avoid overwhelming the server
                     await sleep(.1)
-                    count.increment_batch()
+                    count.increment("batch")
 
             else:
                 log_info("Wait Event is set, stopping all tasks.")
@@ -369,7 +336,7 @@ async def main(count: Count, start_time: datetime = None) -> None:
             
 
 if __name__ == "__main__":
-    count: Count = Count(1)  # Initialize count with 1
+    count: Count = Count() 
     start_time: datetime = datetime.now()
     try:
         run(main(count, start_time))
