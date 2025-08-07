@@ -25,6 +25,7 @@ RUN mkdir -p /usr/local/newrelic
 ADD ./newrelic/newrelic.jar /usr/local/newrelic/newrelic.jar
 ADD ./newrelic/newrelic.yml /usr/local/newrelic/newrelic.yml
 ADD ./atatus-java-agent.jar /usr/local/atatus-java-agent.jar
+ADD ./elastic-apm-agent.jar /usr/local/elastic-apm-agent.jar
 
 # Expose port
 EXPOSE 5050
@@ -35,6 +36,7 @@ ENTRYPOINT [ \
   "java", \
   "-javaagent:/usr/local/newrelic/newrelic.jar", \
   "-javaagent:/usr/local/atatus-java-agent.jar", \
+  "-javaagent:/usr/local/elastic-apm-agent.jar", \
   "-jar", \
   "target/metrics-test-1.0.0.jar" \
 ]

@@ -1,0 +1,65 @@
+Log Time: 2025-08-07 09:21:33
+Total Requests: 155
+Failed Requests: 0
+Endpoint Sleep Requests: 32
+Endpoint Test1 Requests: 51
+Endpoint Test2 Requests: 69
+Endpoint Fail Requests: 1
+Endpoint Exception Requests: 1
+
+Log Time: 2025-08-07 09:28:36
+Total Requests: 25
+Failed Requests: 9
+Endpoint Sleep Requests: 12
+Endpoint Test1 Requests: 4
+Endpoint Test2 Requests: 6
+Endpoint Fail Requests: 1
+Endpoint Exception Requests: 1
+
+Log Time: 2025-08-07 10:00:00
+Total Requests: 41323
+Start Time: 2025-08-07 09:30:22
+End Time: 2025-08-07 10:00:22
+Elapsed Time: 30 minutes
+
+Log Time: 2025-08-07 10:42:31
+Start Time: 2025-08-07 10:42:26
+End Time: 2025-08-07 10:42:31
+Elapsed Time: 0:00:05
+Total Batches: 5
+Total Requests: 116
+Failed Requests: 0
+Endpoint Sleep Requests: 44
+Endpoint Test1 Requests: 30
+Endpoint Test2 Requests: 39
+Endpoint Fail Requests: 1
+Endpoint Exception Requests: 1
+
+======================================================
+#Log Time: 2025-08-07 10:43:47
+Start Time: 2025-08-07 10:43:45
+End Time: 2025-08-07 10:43:47
+Elapsed Time: 0:00:01
+Total Batches: 3
+Total Requests: 84
+Failed Requests: 0
+Endpoint Sleep Requests: 21
+Endpoint Test1 Requests: 28
+Endpoint Test2 Requests: 32
+Endpoint Fail Requests: 1
+Endpoint Exception Requests: 1
+
+======================================================
+# Log Time: 2025-08-07 10:52:23
+Start Time: 2025-08-07 10:46:33
+End Time: 2025-08-07 10:52:23
+Elapsed Time: 0:05:50
+Total Batches: 378
+Total Requests: 7870
+Failed Requests: 7
+Endpoint Sleep Requests: 2516
+Endpoint Test1 Requests: 2527
+Endpoint Test2 Requests: 2733
+Endpoint Fail Requests: 46
+Endpoint Exception Requests: 47
+
