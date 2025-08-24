@@ -1,14 +1,84 @@
 ======================================================
-# Log Time: 2025-08-07 12:26:37
-Start Time: 2025-08-07 12:26:31
-End Time: 2025-08-07 12:26:37
-Elapsed Time: 0:00:05
-Total Batches: 7
-Total Requests: 130
+# Log Time: 2025-08-07 15:42:10
+Start Time: 2025-08-07 15:42:08
+End Time: 2025-08-07 15:42:10
+Elapsed Time: 0:00:02
+Total Batches: 4
+Total Requests: 80
 Failed Requests: 0
-Endpoint Sleep Requests: 36
-Endpoint Test1 Requests: 56
-Endpoint Test2 Requests: 36
+Endpoint Sleep Requests: 18
+Endpoint Test1 Requests: 26
+Endpoint Test2 Requests: 34
 Endpoint Fail Requests: 1
 Endpoint Exception Requests: 1
+
+======================================================
+# Log Time: 2025-08-07 15:43:28
+Start Time: 2025-08-07 15:43:22
+End Time: 2025-08-07 15:43:28
+Elapsed Time: 0:00:05
+Total Batches: 5
+Total Requests: 115
+Failed Requests: 0
+Endpoint Sleep Requests: 32
+Endpoint Test1 Requests: 37
+Endpoint Test2 Requests: 44
+Endpoint Fail Requests: 1
+Endpoint Exception Requests: 1
+
+======================================================
+# Log Time: 2025-08-07 15:43:56
+Start Time: 2025-08-07 15:43:51
+End Time: 2025-08-07 15:43:56
+Elapsed Time: 0:00:05
+Total Batches: 7
+Total Requests: 160
+Failed Requests: 0
+Endpoint Sleep Requests: 29
+Endpoint Test1 Requests: 54
+Endpoint Test2 Requests: 75
+Endpoint Fail Requests: 1
+Endpoint Exception Requests: 1
+
+======================================================
+# Log Time: 2025-08-07 15:45:16
+Start Time: 2025-08-07 15:44:15
+End Time: 2025-08-07 15:45:16
+Elapsed Time: 0:01:00
+Total Batches: 67
+Total Requests: 1440
+Failed Requests: 2
+Endpoint Sleep Requests: 476
+Endpoint Test1 Requests: 437
+Endpoint Test2 Requests: 511
+Endpoint Fail Requests: 8
+Endpoint Exception Requests: 8
+
+======================================================
+# Log Time: 2025-08-07 15:49:51
+Start Time: 2025-08-07 15:49:36
+End Time: 2025-08-07 15:49:51
+Elapsed Time: 0:00:15
+Total Batches: 17
+Total Requests: 374
+Failed Requests: 1
+Endpoint Sleep Requests: 115
+Endpoint Test1 Requests: 139
+Endpoint Test2 Requests: 115
+Endpoint Fail Requests: 2
+Endpoint Exception Requests: 3
+
+======================================================
+# Log Time: 2025-08-07 16:20:00
+Start Time: 2025-08-07 15:50:00
+End Time: 2025-08-07 16:20:00
+Elapsed Time: 0:30:00
+Total Batches: 1926
+Total Requests: 41036
+Failed Requests: 42
+Endpoint Sleep Requests: 13630
+Endpoint Test1 Requests: 13364
+Endpoint Test2 Requests: 13561
+Endpoint Fail Requests: 240
+Endpoint Exception Requests: 241
 

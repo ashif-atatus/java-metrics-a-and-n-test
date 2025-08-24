@@ -69,7 +69,7 @@ public class MetricsController {
         throw new RuntimeException("This endpoint always throws an exception");
     }
 
-    @GetMapping("/test1")
+    @GetMapping("/instant")
     public ResponseEntity<Map<String, Object>> test1() {
         logger.info("GET /test1");
         Map<String, Object> response = new HashMap<>();
@@ -80,14 +80,39 @@ public class MetricsController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/test2")
-    public ResponseEntity<Map<String, Object>> test2() {
-        logger.info("GET /test2");
-        Map<String, Object> response = new HashMap<>();
-        response.put("message", "Test2 completed instantly");
-        response.put("requestedSeconds", 0.0);
-        response.put("actualDurationMs", 0);
-        response.put("timestamp", java.time.Instant.now().toString());
-        return ResponseEntity.ok(response);
+    @GetMapping("/stream")
+    public ResponseEntity<org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody> streamTest(
+            @RequestParam(name = "sizeMb", required = false, defaultValue = "10") int sizeMb,
+            @RequestParam(name = "chunkKb", required = false, defaultValue = "64") int chunkKb,
+            @RequestParam(name = "bytesPerSec", required = false, defaultValue = "0") long bytesPerSec
+    ) {
+        final long totalBytes = Math.max(1, sizeMb) * 1024L * 1024L;
+        final int chunkBytes = Math.max(1, chunkKb) * 1024;
+        final byte[] chunk = new byte[chunkBytes]; // zero-filled
+
+        logger.info("GET /stream-test sizeMb={} chunkKb={} bytesPerSec={}", sizeMb, chunkKb, bytesPerSec);
+
+        org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody stream = outputStream -> {
+            long sent = 0;
+            while (sent < totalBytes) {
+                int toWrite = (int) Math.min(chunkBytes, totalBytes - sent);
+                outputStream.write(chunk, 0, toWrite);
+                outputStream.flush();
+                sent += toWrite;
+
+                if (bytesPerSec > 0) {
+                    double secondsForChunk = (double) toWrite / (double) bytesPerSec;
+                    long sleepMs = (long) Math.ceil(secondsForChunk * 1000.0);
+                    if (sleepMs > 0) Thread.sleep(sleepMs);
+                }
+            }
+            logger.info("Finished streaming {} bytes", sent);
+        };
+
+        return ResponseEntity.ok()
+                .contentType(org.springframework.http.MediaType.APPLICATION_OCTET_STREAM)
+                .header(org.springframework.http.HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"stream-test.bin\"")
+                .body(stream);
     }
+
 }
