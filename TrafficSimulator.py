@@ -133,7 +133,7 @@ class TrafficSimulator:
             log_error(f"===== {current_request_number}. Instant request error: {e}")
         finally:
             await self.count.increment("endpoint_instant")
-            
+
     async def get_random_parameters(self) -> tuple[int, int, int]:
         sizeMb: int = randint(1, 10)
         chunkKb: int = choice([256, 512, 1024, 2048, 4096, 8192])
@@ -294,11 +294,9 @@ class TrafficSimulator:
             f"Endpoint Exception: {await self.count.get('endpoint_exception')}",
         ])
 
-    async def start(self) -> None:
+    async def start(self, TIME: int) -> None:
 
         log_info(f"Start Time: {self.start_time.strftime('%Y-%m-%d %H:%M:%S')}")
-
-        TIME: int = 1800
 
         seed()  # Initialize random number generator
 
@@ -344,10 +342,13 @@ class TrafficSimulator:
 
 
 async def main():
+    
+    TIME: int = 600 
+
     async with AsyncClient() as client:
         try:
             traffic_simulator = TrafficSimulator(client)
-            await traffic_simulator.start()
+            await traffic_simulator.start(TIME)
         except CancelledError:
             log_info("Operation cancelled, stopping all tasks.")
             await traffic_simulator.log_data()
