@@ -133,6 +133,7 @@ class TrafficSimulator:
             log_error(f"===== {current_request_number}. Instant request error: {e}")
         finally:
             await self.count.increment("endpoint_instant")
+            
     async def get_random_parameters(self) -> tuple[int, int, int]:
         sizeMb: int = randint(1, 10)
         chunkKb: int = choice([256, 512, 1024, 2048, 4096, 8192])
