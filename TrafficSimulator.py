@@ -198,7 +198,7 @@ class TrafficSimulator:
 
     async def update_progress(self, time: int, task_id: TaskID, progress: Progress) -> None:
         log_info(f"Timer started for {time} seconds")
-        frame: float = 0.3
+        frame: float = 0.5
         for _ in range(int(time / frame)):
             await sleep(frame)
             progress.update(task_id, advance=frame)
