@@ -82,3 +82,115 @@ Endpoint Test2 Requests: 13561
 Endpoint Fail Requests: 240
 Endpoint Exception Requests: 241
 
+======================================================
+# Log Time: 2025-08-26 16:47:48
+Start Time: 2025-08-26 16:47:37
+End Time: 2025-08-26 16:47:48
+Elapsed Time: 0:00:11
+Total Batches: 6
+Total Requests: 130
+Failed Requests: 23
+Endpoint Sleep Requests: 43
+Endpoint Instant Requests: 37
+Endpoint Stream Requests: 46
+Endpoint Fail Requests: 2
+Endpoint Exception Requests: 2
+
+======================================================
+# Log Time: 2025-08-26 16:52:20
+Start Time: 2025-08-26 16:51:18
+End Time: 2025-08-26 16:52:20
+Elapsed Time: 0:01:01
+Total Batches: 31
+Total Requests: 711
+Failed Requests: 236
+Endpoint Sleep Requests: 277
+Endpoint Instant Requests: 206
+Endpoint Stream Requests: 212
+Endpoint Fail Requests: 8
+Endpoint Exception Requests: 8
+
+======================================================
+# Log Time: 2025-08-26 16:52:27
+Start Time: 2025-08-26 16:51:26
+End Time: 2025-08-26 16:52:27
+Elapsed Time: 0:01:00
+Total Batches: 30
+Total Requests: 654
+Failed Requests: 205
+Endpoint Sleep Requests: 228
+Endpoint Instant Requests: 200
+Endpoint Stream Requests: 210
+Endpoint Fail Requests: 8
+Endpoint Exception Requests: 8
+
+======================================================
+# Log Time: 2025-08-26 16:52:31
+Start Time: 2025-08-26 16:51:30
+End Time: 2025-08-26 16:52:31
+Elapsed Time: 0:01:00
+Total Batches: 30
+Total Requests: 609
+Failed Requests: 213
+Endpoint Sleep Requests: 216
+Endpoint Instant Requests: 158
+Endpoint Stream Requests: 218
+Endpoint Fail Requests: 9
+Endpoint Exception Requests: 8
+
+======================================================
+# Log Time: 2025-08-26 16:52:36
+Start Time: 2025-08-26 16:51:36
+End Time: 2025-08-26 16:52:36
+Elapsed Time: 0:01:00
+Total Batches: 33
+Total Requests: 713
+Failed Requests: 212
+Endpoint Sleep Requests: 235
+Endpoint Instant Requests: 236
+Endpoint Stream Requests: 225
+Endpoint Fail Requests: 8
+Endpoint Exception Requests: 9
+
+======================================================
+# Log Time: 2025-08-26 16:52:36
+Start Time: 2025-08-26 16:51:33
+End Time: 2025-08-26 16:52:36
+Elapsed Time: 0:01:03
+Total Batches: 29
+Total Requests: 696
+Failed Requests: 231
+Endpoint Sleep Requests: 243
+Endpoint Instant Requests: 218
+Endpoint Stream Requests: 219
+Endpoint Fail Requests: 8
+Endpoint Exception Requests: 8
+
+======================================================
+# Log Time: 2025-08-26 16:52:39
+Start Time: 2025-08-26 16:51:38
+End Time: 2025-08-26 16:52:39
+Elapsed Time: 0:01:00
+Total Batches: 27
+Total Requests: 574
+Failed Requests: 192
+Endpoint Sleep Requests: 211
+Endpoint Instant Requests: 149
+Endpoint Stream Requests: 197
+Endpoint Fail Requests: 9
+Endpoint Exception Requests: 8
+
+======================================================
+# Log Time: 2025-08-26 16:53:01
+Start Time: 2025-08-26 16:52:00
+End Time: 2025-08-26 16:53:01
+Elapsed Time: 0:01:01
+Total Batches: 27
+Total Requests: 600
+Failed Requests: 156
+Endpoint Sleep Requests: 207
+Endpoint Instant Requests: 203
+Endpoint Stream Requests: 173
+Endpoint Fail Requests: 9
+Endpoint Exception Requests: 8
+

@@ -82,12 +82,12 @@ class Count:
             f.write(f"Endpoint Exception Requests: {self.counts['endpoint_exception']}\n\n")
 
 class TrafficSimulator:
-    def __init__(self, client: AsyncClient):
+    def __init__(self, client: AsyncClient, base_url: str = "http://localhost:5050"):
         self.client = client
         self.count = Count()
         self.start_time = datetime.now()
         self.wait_event = Event()
-        self.service_url = "http://localhost:5050"
+        self.service_url = base_url
 
     async def generate_random_request_method(self) -> str:
         """Generate a random request method."""
@@ -343,11 +343,12 @@ class TrafficSimulator:
 
 async def main():
     
-    TIME: int = 600 
+    TIME: int = 60
+    BASE_URL: str = "http://localhost:5050"  # Configurable base URL
 
     async with AsyncClient() as client:
         try:
-            traffic_simulator = TrafficSimulator(client)
+            traffic_simulator = TrafficSimulator(client, BASE_URL)
             await traffic_simulator.start(TIME)
         except CancelledError:
             log_info("Operation cancelled, stopping all tasks.")
