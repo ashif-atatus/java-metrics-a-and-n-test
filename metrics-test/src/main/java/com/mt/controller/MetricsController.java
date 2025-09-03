@@ -103,7 +103,12 @@ public class MetricsController {
                 if (bytesPerSec > 0) {
                     double secondsForChunk = (double) toWrite / (double) bytesPerSec;
                     long sleepMs = (long) Math.ceil(secondsForChunk * 1000.0);
-                    if (sleepMs > 0) Thread.sleep(sleepMs);
+                    if (sleepMs > 0)
+                        try {
+                            Thread.sleep(sleepMs);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                 }
             }
             logger.info("Finished streaming {} bytes", sent);

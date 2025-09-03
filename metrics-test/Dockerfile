@@ -25,7 +25,7 @@ RUN mkdir -p /usr/local/newrelic
 ADD ./newrelic/newrelic.jar /usr/local/newrelic/newrelic.jar
 ADD ./newrelic/newrelic.yml /usr/local/newrelic/newrelic.yml
 ADD ./atatus-java-agent.jar /usr/local/atatus-java-agent.jar
-ADD ./elastic-apm-agent.jar /usr/local/elastic-apm-agent.jar
+# ADD ./elastic-apm-agent.jar /usr/local/elastic-apm-agent.jar
 
 # Expose port
 EXPOSE 5050
