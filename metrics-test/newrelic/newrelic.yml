@@ -1,7 +1,7 @@
 common: &default_settings
   license_key: 'eu01xxcfa2e76886bb5f0107f1d462cdFFFFNRAL'
   agent_enabled: true
-  app_name: 'java-metrics-an-test'
+  app_name: 'java-metrics-an-test-2'
   high_security: false
   enable_auto_app_naming: false
   enable_auto_transaction_naming: true

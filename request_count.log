@@ -166,3 +166,31 @@ Endpoint Stream Requests: 12
 Endpoint Fail Requests: 1
 Endpoint Exception Requests: 1
 
+======================================================
+# Log Time: 2025-09-10 12:04:30
+Start Time: 2025-09-10 11:54:27
+End Time: 2025-09-10 12:04:30
+Elapsed Time: 0:10:02
+Total Batches: 294
+Total Requests: 6383
+Failed Requests: 1191
+Endpoint Sleep Requests: 2102
+Endpoint Instant Requests: 2141
+Endpoint Stream Requests: 1973
+Endpoint Fail Requests: 85
+Endpoint Exception Requests: 82
+
+======================================================
+# Log Time: 2025-09-10 12:25:06
+Start Time: 2025-09-10 12:15:05
+End Time: 2025-09-10 12:25:06
+Elapsed Time: 0:10:01
+Total Batches: 281
+Total Requests: 6238
+Failed Requests: 1156
+Endpoint Sleep Requests: 1962
+Endpoint Instant Requests: 2019
+Endpoint Stream Requests: 2094
+Endpoint Fail Requests: 81
+Endpoint Exception Requests: 82
+

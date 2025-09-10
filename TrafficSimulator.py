@@ -343,7 +343,7 @@ class TrafficSimulator:
 
 async def main():
     
-    TIME: int = 864000 
+    TIME: int = 7200
     BASE_URL: str = "http://localhost:5050"  # Configurable base URL
 
     async with AsyncClient() as client:
