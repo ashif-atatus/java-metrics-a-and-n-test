@@ -1,31 +1,271 @@
 services:
-  metrics-test:
+  # metrics-test:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app
+  #   ports:
+  #     - "5050:5050" # Application port
+  #     - "5051:5051" # Management port
+  #     - "9090:9090" # JMX port
+  #   env_file: 
+  #     - .env
+  #   # environment:
+  #     # JAVA_TOOL_OPTIONS: >
+          
+  #     #     -Dcom.sun.management.jmxremote=true
+  #     #     -Dcom.sun.management.jmxremote.port=9090
+  #     #     -Dcom.sun.management.jmxremote.rmi.port=9090
+  #     #     -Dcom.sun.management.jmxremote.authenticate=false
+  #     #     -Dcom.sun.management.jmxremote.ssl=false
+  #     #     -Dcom.sun.management.jmxremote.local.only=false
+  #     #     -Djava.rmi.server.hostname=localhost
+
+  #     #     -Delastic.apm.service_name=metrics-test 
+  #     #     -Delastic.apm.api_key=RUd0N2dwZ0JyOXlwaXRQSmtzYzY6MVlkU2tZVGFpVG5Ca21OOURjc2NHdw== 
+  #     #     -Delastic.apm.server_url=https://my-observability-project-eb807a.apm.asia-south1.gcp.elastic.cloud:443 
+  #     #     -Delastic.apm.environment=production 
+  #     #     -Delastic.apm.application_packages=com.mt 
+  #   networks:
+  #     - metrics-network
+
+  metrics-test-1:
     build:
       context: ./metrics-test
       dockerfile: Dockerfile
     container_name: metrics-test-app
     ports:
-      - "5050:5050" # Application port
-      - "5051:5051" # Management port
-      - "9090:9090" # JMX port
+      - "5051:5050"
     env_file: 
       - .env
-    # environment:
-      # JAVA_TOOL_OPTIONS: >
-          
-      #     -Dcom.sun.management.jmxremote=true
-      #     -Dcom.sun.management.jmxremote.port=9090
-      #     -Dcom.sun.management.jmxremote.rmi.port=9090
-      #     -Dcom.sun.management.jmxremote.authenticate=false
-      #     -Dcom.sun.management.jmxremote.ssl=false
-      #     -Dcom.sun.management.jmxremote.local.only=false
-      #     -Djava.rmi.server.hostname=localhost
+    networks:
+      - metrics-network
 
-      #     -Delastic.apm.service_name=metrics-test 
-      #     -Delastic.apm.api_key=RUd0N2dwZ0JyOXlwaXRQSmtzYzY6MVlkU2tZVGFpVG5Ca21OOURjc2NHdw== 
-      #     -Delastic.apm.server_url=https://my-observability-project-eb807a.apm.asia-south1.gcp.elastic.cloud:443 
-      #     -Delastic.apm.environment=production 
-      #     -Delastic.apm.application_packages=com.mt 
+  metrics-test-2:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5052:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-3:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5053:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-4:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5054:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-5:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5055:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-6:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5056:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-7:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5057:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-8:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5058:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-9:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5059:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-10:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5060:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-11:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5061:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-12:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5062:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-13:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5063:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-14:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5064:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-15:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5065:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-16:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5066:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-17:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5067:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-18:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5068:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-19:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5069:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-20:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app
+    ports:
+      - "5070:5050"
+    env_file: 
+      - .env
     networks:
       - metrics-network
 

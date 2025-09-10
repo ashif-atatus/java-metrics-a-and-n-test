@@ -1,6 +1,6 @@
 ## Stress test script for a Java application with various endpoints.
 
-from asyncio import CancelledError, sleep, create_task, run, gather, Event, Lock
+from asyncio import CancelledError, sleep, create_task, run, gather, Event, Lock, Task
 from datetime import datetime
 from httpx import AsyncClient, Timeout
 from logging import info, error , basicConfig, getLogger
@@ -65,9 +65,10 @@ class Count:
                 raise KeyError(f"Invalid key: {key}")
     
 
-    async def log_to_file(self, start_time: datetime, end_time: datetime, elapsed_str: str):
+    async def log_to_file(self, start_time: datetime, end_time: datetime, elapsed_str: str, host: str):
         with open("request_count.log", "a") as f:
             f.write("======================================================\n")
+            f.write(f"Host: {host}\n")
             f.write(f"# Log Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write(f"Start Time: {start_time.strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write(f"End Time: {end_time.strftime('%Y-%m-%d %H:%M:%S')}\n")
@@ -263,6 +264,7 @@ class TrafficSimulator:
 
     async def log_data(self) -> None:
         """Log the current state of the count."""
+        log_info("======================================================")
         log_info("Logging current state...")
         log_info(f"Start Time: {self.start_time.strftime('%Y-%m-%d %H:%M:%S')}")
         end_time = datetime.now()
@@ -280,10 +282,11 @@ class TrafficSimulator:
         log_info(f"Endpoint Fail Requests: {await self.count.get('endpoint_fail')}")
         log_info(f"Endpoint Exception Requests: {await self.count.get('endpoint_exception')}")
 
-        await self.count.log_to_file(self.start_time, end_time, elapsed_str)
+        await self.count.log_to_file(self.start_time, end_time, elapsed_str, self.service_url)
 
     async def get_pbar_description(self) -> str:
         return "\n".join([
+            f"HOST: {self.service_url}",
             f"Total Batch: {await self.count.get('batch')}",
             f"Total Requests: {await self.count.get('total_request')}",
             f"Failed Requests: {await self.count.get('failed_request')}",
@@ -310,7 +313,7 @@ class TrafficSimulator:
             TimeRemainingColumn(),
         )
 
-        task_id: TaskID = progress.add_task("Sending requests", total=TIME)
+        task_id: TaskID = progress.add_task(f"Sending requests : {self.service_url}", total=TIME)
         progress.console.clear()  # Clear the console before starting the progress bar
         with Live(progress, refresh_per_second=1) as _:
             create_task(self.timer(TIME, wait_event))
@@ -343,16 +346,33 @@ class TrafficSimulator:
 
 async def main():
     
-    TIME: int = 7200
-    BASE_URL: str = "http://localhost:5050"  # Configurable base URL
+    TIME: int = 5
+    BASE_URL: str = "http://localhost"  # Configurable base URL
+
+    PORT_LOWER_LIMIT: int = 5050
+    PORT_UPPER_LIMIT: int = 5052
 
     async with AsyncClient() as client:
+        tasks: list[Task] = []
         try:
-            traffic_simulator = TrafficSimulator(client, BASE_URL)
-            await traffic_simulator.start(TIME)
+
+            instances: list[TrafficSimulator] = []
+            tasks: list[Task] = []
+
+            for port in range(PORT_LOWER_LIMIT, PORT_UPPER_LIMIT + 1):
+                traffic_simulator = TrafficSimulator(client, f"{BASE_URL}:{port}")
+                instances.append(traffic_simulator)
+                task = create_task(traffic_simulator.start(TIME))
+                tasks.append(task)
+
+            await gather(*tasks)
         except CancelledError:
             log_info("Operation cancelled, stopping all tasks.")
-            await traffic_simulator.log_data()
+            log_info("======================================================")
+            log_info("======================================================")
+
+            for instance in instances:
+                await instance.log_data()
 
 
 if __name__ == "__main__":
