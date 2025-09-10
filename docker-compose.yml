@@ -269,365 +269,365 @@ services:
     networks:
       - metrics-network
 
-  metrics-test-21:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-21
-    ports:
-      - "5071:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-21:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-21
+  #   ports:
+  #     - "5071:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-22:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-22
-    ports:
-      - "5072:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-22:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-22
+  #   ports:
+  #     - "5072:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-23:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-23
-    ports:
-      - "5073:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-23:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-23
+  #   ports:
+  #     - "5073:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-24:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-24
-    ports:
-      - "5074:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-24:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-24
+  #   ports:
+  #     - "5074:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-25:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-25
-    ports:
-      - "5075:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-25:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-25
+  #   ports:
+  #     - "5075:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-26:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-26
-    ports:
-      - "5076:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-26:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-26
+  #   ports:
+  #     - "5076:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-27:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-27
-    ports:
-      - "5077:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-27:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-27
+  #   ports:
+  #     - "5077:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-28:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-28
-    ports:
-      - "5078:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-28:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-28
+  #   ports:
+  #     - "5078:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-29:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-29
-    ports:
-      - "5079:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-29:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-29
+  #   ports:
+  #     - "5079:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-30:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-30
-    ports:
-      - "5080:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-30:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-30
+  #   ports:
+  #     - "5080:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-31:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-31
-    ports:
-      - "5081:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-31:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-31
+  #   ports:
+  #     - "5081:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-32:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-32
-    ports:
-      - "5082:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-32:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-32
+  #   ports:
+  #     - "5082:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-33:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-33
-    ports:
-      - "5083:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-33:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-33
+  #   ports:
+  #     - "5083:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-34:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-34
-    ports:
-      - "5084:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-34:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-34
+  #   ports:
+  #     - "5084:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-35:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-35
-    ports:
-      - "5085:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-35:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-35
+  #   ports:
+  #     - "5085:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-36:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-36
-    ports:
-      - "5086:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-36:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-36
+  #   ports:
+  #     - "5086:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-37:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-37
-    ports:
-      - "5087:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-37:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-37
+  #   ports:
+  #     - "5087:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-38:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-38
-    ports:
-      - "5088:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-38:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-38
+  #   ports:
+  #     - "5088:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-39:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-39
-    ports:
-      - "5089:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-39:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-39
+  #   ports:
+  #     - "5089:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-40:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-40
-    ports:
-      - "5090:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-40:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-40
+  #   ports:
+  #     - "5090:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-41:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-41
-    ports:
-      - "5091:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-41:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-41
+  #   ports:
+  #     - "5091:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-42:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-42
-    ports:
-      - "5092:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-42:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-42
+  #   ports:
+  #     - "5092:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-43:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-43
-    ports:
-      - "5093:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-43:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-43
+  #   ports:
+  #     - "5093:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-44:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-44
-    ports:
-      - "5094:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-44:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-44
+  #   ports:
+  #     - "5094:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-45:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-45
-    ports:
-      - "5095:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-45:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-45
+  #   ports:
+  #     - "5095:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-46:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-46
-    ports:
-      - "5096:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-46:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-46
+  #   ports:
+  #     - "5096:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-47:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-47
-    ports:
-      - "5097:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-47:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-47
+  #   ports:
+  #     - "5097:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-48:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-48
-    ports:
-      - "5098:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-48:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-48
+  #   ports:
+  #     - "5098:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-49:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-49
-    ports:
-      - "5099:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-49:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-49
+  #   ports:
+  #     - "5099:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
-  metrics-test-50:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-50
-    ports:
-      - "5100:5050"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
+  # metrics-test-50:
+  #   build:
+  #     context: ./metrics-test
+  #     dockerfile: Dockerfile
+  #   container_name: metrics-test-app-50
+  #   ports:
+  #     - "5100:5050"
+  #   env_file: 
+  #     - .env
+  #   networks:
+  #     - metrics-network
 
 networks:
   metrics-network:
