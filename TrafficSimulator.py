@@ -346,11 +346,11 @@ class TrafficSimulator:
 
 async def main():
     
-    TIME: int = 5
+    TIME: int = 600
     BASE_URL: str = "http://localhost"  # Configurable base URL
 
-    PORT_LOWER_LIMIT: int = 5050
-    PORT_UPPER_LIMIT: int = 5052
+    PORT_LOWER_LIMIT: int = 5051
+    PORT_UPPER_LIMIT: int = 5056
 
     async with AsyncClient() as client:
         tasks: list[Task] = []
