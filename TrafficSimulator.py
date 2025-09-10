@@ -198,7 +198,7 @@ class TrafficSimulator:
 
     async def update_progress(self, time: int, task_id: TaskID, progress: Progress) -> None:
         log_info(f"Timer started for {time} seconds")
-        frame: float = 0.5
+        frame: float = 1
         for _ in range(int(time / frame)):
             await sleep(frame)
             progress.update(task_id, advance=frame)
@@ -343,7 +343,7 @@ class TrafficSimulator:
 
 async def main():
     
-    TIME: int = 60
+    TIME: int = 864000 
     BASE_URL: str = "http://localhost:5050"  # Configurable base URL
 
     async with AsyncClient() as client:

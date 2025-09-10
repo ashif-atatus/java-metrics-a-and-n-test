@@ -84,7 +84,7 @@ public class MetricsController {
     public ResponseEntity<org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody> streamTest(
             @RequestParam(name = "sizeMb", required = false, defaultValue = "10") int sizeMb,
             @RequestParam(name = "chunkKb", required = false, defaultValue = "64") int chunkKb,
-            @RequestParam(name = "bytesPerSec", required = false, defaultValue = "0") long bytesPerSec
+            @RequestParam(name = "bytesPerSec", required = false, defaultValue = "1000") long bytesPerSec
     ) {
         final long totalBytes = Math.max(1, sizeMb) * 1024L * 1024L;
         final int chunkBytes = Math.max(1, chunkKb) * 1024;
@@ -118,6 +118,113 @@ public class MetricsController {
                 .contentType(org.springframework.http.MediaType.APPLICATION_OCTET_STREAM)
                 .header(org.springframework.http.HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"stream-test.bin\"")
                 .body(stream);
+    }
+
+    private static class HeavyOperationRequest {
+        private int iterations = 1000000;
+
+        public int getIterations() {
+            return iterations;
+        }
+
+        public void setIterations(int iterations) {
+            this.iterations = iterations;
+        }
+    }
+
+    @PostMapping("/thread")
+    public ResponseEntity<Map<String, Object>> heavyOperation(@RequestBody(required = false) HeavyOperationRequest request) {
+        logger.info("POST /heavy-operation");
+        long startTime = System.currentTimeMillis();
+
+        final int iterations = (request != null) ? request.getIterations() : 1000000;
+
+        Thread heavyThread = new Thread(() -> {
+            logger.info("Starting heavy operation in a new thread with {} iterations.", iterations);
+            // Simulate heavy operation
+            for (int i = 0; i < iterations; i++) {
+                double value = Math.sqrt(i) * Math.sin(i);
+            }
+            logger.info("Heavy operation finished in thread.");
+        }, "ashif-custom-thread");
+
+        heavyThread.start();
+        // try {
+        //     heavyThread.join();
+        // } catch (InterruptedException e) {
+        //     Thread.currentThread().interrupt();
+        //     Map<String, Object> errorResponse = new HashMap<>();
+        //     errorResponse.put("error", "Heavy operation interrupted");
+        //     errorResponse.put("timestamp", java.time.Instant.now().toString());
+        //     return ResponseEntity.internalServerError().body(errorResponse);
+        // }
+
+        long endTime = System.currentTimeMillis();
+        long actualDuration = endTime - startTime;
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Heavy operation completed");
+        response.put("iterations", iterations);
+        response.put("actualDurationMs", actualDuration);
+        response.put("timestamp", java.time.Instant.now().toString());
+
+        return ResponseEntity.ok(response);
+    }
+
+    public static int getRandomOneToFour() {
+        return ThreadLocalRandom.current().nextInt(1, 5);
+    }
+    
+    @PostMapping("/thread2")
+    public ResponseEntity<Map<String, Object>> heavyOperation2(@RequestBody(required = false) HeavyOperationRequest request) {
+        logger.info("POST /heavy-operation");
+        long startTime = System.currentTimeMillis();
+
+        final int iterations = (request != null) ? request.getIterations() : 1000000;
+
+        Thread heavyThread = new Thread(() -> {
+            logger.info("Starting heavy operation in a new thread with {} iterations.", iterations);
+            // Simulate heavy operation
+
+            int count = 0;
+            while (true) {
+                count++;
+                System.out.println("Running Iteration " + count);
+                for (int i = 0; i < iterations; i++) {
+                    double value = Math.sqrt(i) * Math.sin(i);
+                }
+                try{
+                    Thread.sleep(getRandomOneToFour() * 1000);   
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    System.out.println("Thread interrupted.");
+                    break;
+                }         
+            }
+            logger.info("Heavy operation finished in thread.");
+        }, "ashif-custom-thread");
+
+        heavyThread.start();
+        // try {
+        //     heavyThread.join();
+        // } catch (InterruptedException e) {
+        //     Thread.currentThread().interrupt();
+        //     Map<String, Object> errorResponse = new HashMap<>();
+        //     errorResponse.put("error", "Heavy operation interrupted");
+        //     errorResponse.put("timestamp", java.time.Instant.now().toString());
+        //     return ResponseEntity.internalServerError().body(errorResponse);
+        // }
+
+        long endTime = System.currentTimeMillis();
+        long actualDuration = endTime - startTime;
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Heavy operation completed");
+        response.put("iterations", iterations);
+        response.put("actualDurationMs", actualDuration);
+        response.put("timestamp", java.time.Instant.now().toString());
+
+        return ResponseEntity.ok(response);
     }
 
 }
