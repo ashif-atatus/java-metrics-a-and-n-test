@@ -33,18 +33,29 @@
   RUN chmod +x entrypoint.sh
 
   # Expose port
-  EXPOSE 5050
+  # EXPOSE 5050
   EXPOSE 5051
+  EXPOSE 5052
+  EXPOSE 5053 
+  EXPOSE 5054
+  EXPOSE 5055
+  EXPOSE 5056
+  EXPOSE 5057
+  EXPOSE 5058
+  EXPOSE 5059
+  EXPOSE 5060
+  EXPOSE 5061
+  EXPOSE 5062
 
   # Run the application
   # CMD ["java", "-jar", "target/metrics-test-1.0.0.jar"]
-  ENTRYPOINT [ \
-    "java", \
-    "-javaagent:/usr/local/newrelic/newrelic.jar", \
-    "-javaagent:/usr/local/atatus-java-agent.jar", \
-    # "-javaagent:/usr/local/elastic-apm-agent.jar", \
-    "-jar", \
-    "target/metrics-test-1.0.0.jar" \
-  ]
-  # ENTRYPOINT [ "./entrypoint.sh" ]
+  # ENTRYPOINT [ \
+  #   "java", \
+  #   "-javaagent:/usr/local/newrelic/newrelic.jar", \
+  #   "-javaagent:/usr/local/atatus-java-agent.jar", \
+  #   # "-javaagent:/usr/local/elastic-apm-agent.jar", \
+  #   "-jar", \
+  #   "target/metrics-test-1.0.0.jar" \
+  # ]
+  ENTRYPOINT [ "./entrypoint.sh" ]
 

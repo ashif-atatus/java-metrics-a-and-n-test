@@ -1,0 +1,255 @@
+======================================================
+Host: http://localhost:5051
+# Log Time: 2025-09-10 18:22:16
+Start Time: 2025-09-10 18:21:45
+End Time: 2025-09-10 18:22:16
+Elapsed Time: 0:00:31
+Total Batches: 6
+Total Requests: 169
+Failed Requests: 148
+Endpoint Sleep Requests: 50
+Endpoint Instant Requests: 49
+Endpoint Stream Requests: 43
+Endpoint Fail Requests: 0
+Endpoint Exception Requests: 0
+
+======================================================
+Host: http://localhost:5052
+# Log Time: 2025-09-10 18:22:16
+Start Time: 2025-09-10 18:21:45
+End Time: 2025-09-10 18:22:16
+Elapsed Time: 0:00:31
+Total Batches: 6
+Total Requests: 159
+Failed Requests: 136
+Endpoint Sleep Requests: 48
+Endpoint Instant Requests: 61
+Endpoint Stream Requests: 43
+Endpoint Fail Requests: 0
+Endpoint Exception Requests: 0
+
+======================================================
+Host: http://localhost:5053
+# Log Time: 2025-09-10 18:22:16
+Start Time: 2025-09-10 18:21:45
+End Time: 2025-09-10 18:22:16
+Elapsed Time: 0:00:31
+Total Batches: 6
+Total Requests: 137
+Failed Requests: 112
+Endpoint Sleep Requests: 36
+Endpoint Instant Requests: 48
+Endpoint Stream Requests: 34
+Endpoint Fail Requests: 0
+Endpoint Exception Requests: 0
+
+======================================================
+Host: http://localhost:5054
+# Log Time: 2025-09-10 18:22:16
+Start Time: 2025-09-10 18:21:45
+End Time: 2025-09-10 18:22:16
+Elapsed Time: 0:00:31
+Total Batches: 5
+Total Requests: 171
+Failed Requests: 144
+Endpoint Sleep Requests: 41
+Endpoint Instant Requests: 66
+Endpoint Stream Requests: 58
+Endpoint Fail Requests: 0
+Endpoint Exception Requests: 0
+
+======================================================
+Host: http://localhost:5055
+# Log Time: 2025-09-10 18:22:16
+Start Time: 2025-09-10 18:21:45
+End Time: 2025-09-10 18:22:16
+Elapsed Time: 0:00:31
+Total Batches: 5
+Total Requests: 98
+Failed Requests: 79
+Endpoint Sleep Requests: 41
+Endpoint Instant Requests: 16
+Endpoint Stream Requests: 35
+Endpoint Fail Requests: 0
+Endpoint Exception Requests: 0
+
+======================================================
+Host: http://localhost:5056
+# Log Time: 2025-09-10 18:22:16
+Start Time: 2025-09-10 18:21:45
+End Time: 2025-09-10 18:22:16
+Elapsed Time: 0:00:31
+Total Batches: 6
+Total Requests: 158
+Failed Requests: 128
+Endpoint Sleep Requests: 22
+Endpoint Instant Requests: 51
+Endpoint Stream Requests: 49
+Endpoint Fail Requests: 0
+Endpoint Exception Requests: 0
+
+======================================================
+Host: http://localhost:5057
+# Log Time: 2025-09-10 18:22:16
+Start Time: 2025-09-10 18:21:45
+End Time: 2025-09-10 18:22:16
+Elapsed Time: 0:00:31
+Total Batches: 6
+Total Requests: 136
+Failed Requests: 116
+Endpoint Sleep Requests: 26
+Endpoint Instant Requests: 47
+Endpoint Stream Requests: 37
+Endpoint Fail Requests: 0
+Endpoint Exception Requests: 0
+
+======================================================
+Host: http://localhost:5058
+# Log Time: 2025-09-10 18:22:16
+Start Time: 2025-09-10 18:21:45
+End Time: 2025-09-10 18:22:16
+Elapsed Time: 0:00:31
+Total Batches: 6
+Total Requests: 201
+Failed Requests: 179
+Endpoint Sleep Requests: 44
+Endpoint Instant Requests: 57
+Endpoint Stream Requests: 72
+Endpoint Fail Requests: 0
+Endpoint Exception Requests: 0
+
+======================================================
+Host: http://localhost:5059
+# Log Time: 2025-09-10 18:22:16
+Start Time: 2025-09-10 18:21:45
+End Time: 2025-09-10 18:22:16
+Elapsed Time: 0:00:31
+Total Batches: 5
+Total Requests: 129
+Failed Requests: 129
+Endpoint Sleep Requests: 32
+Endpoint Instant Requests: 26
+Endpoint Stream Requests: 65
+Endpoint Fail Requests: 0
+Endpoint Exception Requests: 0
+
+======================================================
+Host: http://localhost:5060
+# Log Time: 2025-09-10 18:22:16
+Start Time: 2025-09-10 18:21:45
+End Time: 2025-09-10 18:22:16
+Elapsed Time: 0:00:31
+Total Batches: 5
+Total Requests: 105
+Failed Requests: 87
+Endpoint Sleep Requests: 26
+Endpoint Instant Requests: 33
+Endpoint Stream Requests: 40
+Endpoint Fail Requests: 0
+Endpoint Exception Requests: 0
+
+======================================================
+Host: http://localhost:5061
+# Log Time: 2025-09-10 18:22:16
+Start Time: 2025-09-10 18:21:45
+End Time: 2025-09-10 18:22:16
+Elapsed Time: 0:00:31
+Total Batches: 6
+Total Requests: 103
+Failed Requests: 87
+Endpoint Sleep Requests: 27
+Endpoint Instant Requests: 25
+Endpoint Stream Requests: 29
+Endpoint Fail Requests: 0
+Endpoint Exception Requests: 0
+
+======================================================
+Host: http://localhost:5062
+# Log Time: 2025-09-10 18:22:16
+Start Time: 2025-09-10 18:21:45
+End Time: 2025-09-10 18:22:16
+Elapsed Time: 0:00:31
+Total Batches: 6
+Total Requests: 155
+Failed Requests: 146
+Endpoint Sleep Requests: 54
+Endpoint Instant Requests: 36
+Endpoint Stream Requests: 50
+Endpoint Fail Requests: 0
+Endpoint Exception Requests: 0
+
+======================================================
+Host: http://localhost:5051
+# Log Time: 2025-09-10 18:24:42
+Start Time: 2025-09-10 18:24:08
+End Time: 2025-09-10 18:24:42
+Elapsed Time: 0:00:34
+Total Batches: 202
+Total Requests: 4404
+Failed Requests: 4404
+Endpoint Sleep Requests: 1459
+Endpoint Instant Requests: 1563
+Endpoint Stream Requests: 1372
+Endpoint Fail Requests: 0
+Endpoint Exception Requests: 0
+
+======================================================
+Host: http://localhost:5051
+# Log Time: 2025-09-10 18:24:55
+Start Time: 2025-09-10 18:24:48
+End Time: 2025-09-10 18:24:55
+Elapsed Time: 0:00:06
+Total Batches: 37
+Total Requests: 813
+Failed Requests: 813
+Endpoint Sleep Requests: 291
+Endpoint Instant Requests: 265
+Endpoint Stream Requests: 253
+Endpoint Fail Requests: 0
+Endpoint Exception Requests: 0
+
+======================================================
+Host: http://localhost:5051
+# Log Time: 2025-09-10 18:27:24
+Start Time: 2025-09-10 18:25:43
+End Time: 2025-09-10 18:27:24
+Elapsed Time: 0:01:41
+Total Batches: 49
+Total Requests: 1080
+Failed Requests: 199
+Endpoint Sleep Requests: 354
+Endpoint Instant Requests: 361
+Endpoint Stream Requests: 336
+Endpoint Fail Requests: 12
+Endpoint Exception Requests: 17
+
+======================================================
+Host: http://localhost:5052
+# Log Time: 2025-09-10 18:30:51
+Start Time: 2025-09-10 18:29:11
+End Time: 2025-09-10 18:30:51
+Elapsed Time: 0:01:40
+Total Batches: 657
+Total Requests: 13976
+Failed Requests: 13976
+Endpoint Sleep Requests: 4593
+Endpoint Instant Requests: 4646
+Endpoint Stream Requests: 4711
+Endpoint Fail Requests: 0
+Endpoint Exception Requests: 0
+
+======================================================
+Host: http://localhost:5051
+# Log Time: 2025-09-10 18:30:52
+Start Time: 2025-09-10 18:29:11
+End Time: 2025-09-10 18:30:52
+Elapsed Time: 0:01:40
+Total Batches: 50
+Total Requests: 1004
+Failed Requests: 189
+Endpoint Sleep Requests: 302
+Endpoint Instant Requests: 281
+Endpoint Stream Requests: 394
+Endpoint Fail Requests: 13
+Endpoint Exception Requests: 14
+
