@@ -267,7 +267,7 @@ class TrafficSimulator:
 
     async def get_random_batch_size(self) -> int:
         """Generate a random batch size between 0 and 15."""
-        return choice(range(0, 3))
+        return choice(range(1, 3))
 
 
     async def send_batch(self) -> None:
@@ -277,7 +277,7 @@ class TrafficSimulator:
         stream_batch: list = await self.batch_of_stream(await self.get_random_batch_size())
 
         await gather(
-            # *sleep_batch, 
+            *sleep_batch, 
             *instant_batch, 
             *stream_batch
             )
@@ -340,8 +340,9 @@ class TrafficSimulator:
             create_task(self.update_progress(TIME, task_id, progress))
             create_task(self.send_to_fail(wait_event))
             create_task(self.send_to_exception(wait_event))
-            await self.send_to_thread_2(10000000)
+            
             # await self.send_to_thread_2(5000000)
+            await self.send_to_thread_2(10000000)
             await self.send_to_thread_2(50000000)
 
             log_info("Starting to send batches of requests...")
@@ -369,11 +370,11 @@ class TrafficSimulator:
 
 async def main():
     
-    TIME: int = 10800
+    TIME: int = 900
     BASE_URL: str = "http://localhost"  # Configurable base URL
 
     PORT_LOWER_LIMIT: int = 5051
-    PORT_UPPER_LIMIT: int = 5053
+    PORT_UPPER_LIMIT: int = 5051
 
     async with AsyncClient() as client:
         tasks: list[Task] = []

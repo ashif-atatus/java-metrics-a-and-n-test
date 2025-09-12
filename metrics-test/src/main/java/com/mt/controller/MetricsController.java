@@ -205,7 +205,8 @@ public class MetricsController {
         }, "darkglance-thread");
 
         heavyThread.start();
-        heavyThread.start();
+        // heavyThread.start();
+        
         // try {
         //     heavyThread.join();
         // } catch (InterruptedException e) {

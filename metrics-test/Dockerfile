@@ -27,7 +27,8 @@
   # ADD ./atatus-java-agent.jar /usr/local/atatus-java-agent.jar
   # ADD ./elastic-apm-agent.jar /usr/local/elastic-apm-agent.jar
 
-  ADD ./atatus-java-agent.jar /usr/local/atatus-java-agent.jar
+  # ADD ./atatus-java-agent.jar /usr/local/atatus-java-agent.jar
+  ADD ./atatus-agent-rishivin.jar /usr/local/atatus-java-agent.jar
   ADD entrypoint.sh entrypoint.sh
 
   RUN chmod +x entrypoint.sh
