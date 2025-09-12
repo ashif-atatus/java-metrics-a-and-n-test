@@ -3,7 +3,7 @@
 from asyncio import CancelledError, sleep, create_task, run, gather, Event, Lock, Task
 from datetime import datetime
 from httpx import AsyncClient, Timeout
-from logging import info, error , basicConfig, getLogger
+from logging import info, error , basicConfig, getLogger, FileHandler
 from random import randint, random, seed
 from secrets import choice
 from sys import exit
@@ -18,9 +18,16 @@ from rich.progress import (
 )
 from rich.live import Live
 
-LOG_LEVEL: str = "CRITICAL"  # Set the desired log level
+LOG_LEVEL: str = "INFO"  # Set the desired log level
 
-basicConfig(level=LOG_LEVEL, format="%(asctime)s - %(levelname)s - %(message)s") # Configure logging
+basicConfig(
+    level=LOG_LEVEL, 
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        FileHandler("traffic-simulator.log", mode="a") # file output
+        # logging.StreamHandler()  # console output
+    ]
+) # Configure logging
 getLogger("httpx").setLevel("ERROR")  # Suppress httpx logs
 
 def log_info(message: str) -> None:
@@ -92,15 +99,15 @@ class TrafficSimulator:
 
     async def generate_random_request_method(self) -> str:
         """Generate a random request method."""
-        return choice(["GET", "POST", "GET", "GET", "GET"])
+        return choice(["GET", "POST", "GET", "GET", "GET", "GET", "GET", "GET", "GET", "GET"])
         
 
     async def get_request(self, url: str) -> None:
         await self.client.get(url, timeout=Timeout(1.0))
         
 
-    async def post_request(self, url: str) -> None:
-        await self.client.post(url, timeout=Timeout(1.0))
+    async def post_request(self, url: str, body: dict = None) -> None:
+        await self.client.post(url, timeout=Timeout(1.0), json=body if body else {})
         
 
     async def send_to_sleep(self, current_request_number: int):
@@ -134,6 +141,15 @@ class TrafficSimulator:
             log_error(f"===== {current_request_number}. Instant request error: {e}")
         finally:
             await self.count.increment("endpoint_instant")
+
+    async def send_to_thread_2(self, iterations: int):
+        url: str = f"{self.service_url}/thread2"
+
+        try:
+            await self.post_request(url, body ={"iterations": iterations})
+            log_info(f"##### Thread 2 request sent successfully")
+        except Exception as e:
+            log_error(f"===== Thread 2 request error: {e}")
 
     async def get_random_parameters(self) -> tuple[int, int, int]:
         sizeMb: int = randint(1, 10)
@@ -251,7 +267,7 @@ class TrafficSimulator:
 
     async def get_random_batch_size(self) -> int:
         """Generate a random batch size between 0 and 15."""
-        return choice(range(0, 15))
+        return choice(range(0, 3))
 
 
     async def send_batch(self) -> None:
@@ -260,7 +276,11 @@ class TrafficSimulator:
         instant_batch: list = await self.batch_of_instant(await self.get_random_batch_size())
         stream_batch: list = await self.batch_of_stream(await self.get_random_batch_size())
 
-        await gather(*sleep_batch, *instant_batch, *stream_batch)
+        await gather(
+            # *sleep_batch, 
+            *instant_batch, 
+            *stream_batch
+            )
 
     async def log_data(self) -> None:
         """Log the current state of the count."""
@@ -320,6 +340,9 @@ class TrafficSimulator:
             create_task(self.update_progress(TIME, task_id, progress))
             create_task(self.send_to_fail(wait_event))
             create_task(self.send_to_exception(wait_event))
+            await self.send_to_thread_2(10000000)
+            # await self.send_to_thread_2(5000000)
+            await self.send_to_thread_2(50000000)
 
             log_info("Starting to send batches of requests...")
 
@@ -346,11 +369,11 @@ class TrafficSimulator:
 
 async def main():
     
-    TIME: int = 100
+    TIME: int = 10800
     BASE_URL: str = "http://localhost"  # Configurable base URL
 
     PORT_LOWER_LIMIT: int = 5051
-    PORT_UPPER_LIMIT: int = 5052
+    PORT_UPPER_LIMIT: int = 5053
 
     async with AsyncClient() as client:
         tasks: list[Task] = []

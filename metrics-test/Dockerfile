@@ -49,13 +49,13 @@
 
   # Run the application
   # CMD ["java", "-jar", "target/metrics-test-1.0.0.jar"]
-  # ENTRYPOINT [ \
-  #   "java", \
-  #   "-javaagent:/usr/local/newrelic/newrelic.jar", \
-  #   "-javaagent:/usr/local/atatus-java-agent.jar", \
-  #   # "-javaagent:/usr/local/elastic-apm-agent.jar", \
-  #   "-jar", \
-  #   "target/metrics-test-1.0.0.jar" \
-  # ]
-  ENTRYPOINT [ "./entrypoint.sh" ]
+  ENTRYPOINT [ \
+    "java", \
+    "-javaagent:/usr/local/newrelic/newrelic.jar", \
+    "-javaagent:/usr/local/atatus-java-agent.jar", \
+    # "-javaagent:/usr/local/elastic-apm-agent.jar", \
+    "-jar", \
+    "target/metrics-test-1.0.0.jar" \
+  ]
+  # ENTRYPOINT [ "./entrypoint.sh" ]
 

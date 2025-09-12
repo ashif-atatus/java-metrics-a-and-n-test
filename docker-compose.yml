@@ -28,64 +28,64 @@ services:
   #     #     -Delastic.apm.application_packages=com.mt 
   #   networks:
   #     - metrics-network
-  metrics-test-1:
-    build:
-      context: ./metrics-test
-      dockerfile: Dockerfile
-    container_name: metrics-test-app-1
-    ports:
-      - "5051:5051"
-      - "5052:5052"
-      - "5053:5053"
-      - "5054:5054"
-      - "5055:5055"
-      - "5056:5056"
-      - "5057:5057"
-      - "5058:5058"
-      - "5059:5059"
-      - "5060:5060"
-      - "5061:5061"
-      - "5062:5062"
-    env_file: 
-      - .env
-    networks:
-      - metrics-network
-
   # metrics-test-1:
   #   build:
   #     context: ./metrics-test
   #     dockerfile: Dockerfile
   #   container_name: metrics-test-app-1
   #   ports:
-  #     - "5051:5050"
-  #   env_file: 
-  #     - .env
-  #   networks:
-      # - metrics-network
-
-  # metrics-test-2:
-  #   build:
-  #     context: ./metrics-test
-  #     dockerfile: Dockerfile
-  #   container_name: metrics-test-app-2
-  #   ports:
-  #     - "5052:5050"
-  #   env_file: 
-  #     - .env
-  #   networks:
-  #     - metrics-network
-
-  # metrics-test-3:
-  #   build:
-  #     context: ./metrics-test
-  #     dockerfile: Dockerfile
-  #   container_name: metrics-test-app-3
-  #   ports:
-  #     - "5053:5050"
+  #     - "5051:5051"
+  #     - "5052:5052"
+  #     - "5053:5053"
+  #     - "5054:5054"
+  #     - "5055:5055"
+  #     - "5056:5056"
+  #     - "5057:5057"
+  #     - "5058:5058"
+  #     - "5059:5059"
+  #     - "5060:5060"
+  #     - "5061:5061"
+  #     - "5062:5062"
   #   env_file: 
   #     - .env
   #   networks:
   #     - metrics-network
+
+  metrics-test-1:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app-1
+    ports:
+      - "5051:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-2:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app-2
+    ports:
+      - "5052:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
+
+  metrics-test-3:
+    build:
+      context: ./metrics-test
+      dockerfile: Dockerfile
+    container_name: metrics-test-app-3
+    ports:
+      - "5053:5050"
+    env_file: 
+      - .env
+    networks:
+      - metrics-network
 
   # metrics-test-4:
   #   build:

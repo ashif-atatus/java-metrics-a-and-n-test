@@ -189,7 +189,7 @@ public class MetricsController {
             int count = 0;
             while (true) {
                 count++;
-                System.out.println("Running Iteration " + count);
+                System.out.println("Running Thread Iteration " + count);
                 for (int i = 0; i < iterations; i++) {
                     double value = Math.sqrt(i) * Math.sin(i);
                 }
@@ -202,8 +202,9 @@ public class MetricsController {
                 }         
             }
             logger.info("Heavy operation finished in thread.");
-        }, "ashif-custom-thread");
+        }, "darkglance-thread");
 
+        heavyThread.start();
         heavyThread.start();
         // try {
         //     heavyThread.join();
