@@ -340,7 +340,7 @@ class TrafficSimulator:
             create_task(self.update_progress(TIME, task_id, progress))
             create_task(self.send_to_fail(wait_event))
             create_task(self.send_to_exception(wait_event))
-            
+
             # await self.send_to_thread_2(5000000)
             await self.send_to_thread_2(10000000)
             await self.send_to_thread_2(50000000)
@@ -370,11 +370,11 @@ class TrafficSimulator:
 
 async def main():
     
-    TIME: int = 900
+    TIME: int = 600
     BASE_URL: str = "http://localhost"  # Configurable base URL
 
     PORT_LOWER_LIMIT: int = 5051
-    PORT_UPPER_LIMIT: int = 5051
+    PORT_UPPER_LIMIT: int = 5053
 
     async with AsyncClient() as client:
         tasks: list[Task] = []

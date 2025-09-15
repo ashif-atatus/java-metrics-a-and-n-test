@@ -27,8 +27,8 @@
   # ADD ./atatus-java-agent.jar /usr/local/atatus-java-agent.jar
   # ADD ./elastic-apm-agent.jar /usr/local/elastic-apm-agent.jar
 
-  # ADD ./atatus-java-agent.jar /usr/local/atatus-java-agent.jar
-  ADD ./atatus-agent-rishivin.jar /usr/local/atatus-java-agent.jar
+  ADD ./atatus-java-agent.jar /usr/local/atatus-java-agent.jar
+  # ADD ./atatus-agent-rishivin.jar /usr/local/atatus-java-agent.jar
   ADD entrypoint.sh entrypoint.sh
 
   RUN chmod +x entrypoint.sh
@@ -50,13 +50,13 @@
 
   # Run the application
   # CMD ["java", "-jar", "target/metrics-test-1.0.0.jar"]
-  ENTRYPOINT [ \
-    "java", \
-    "-javaagent:/usr/local/newrelic/newrelic.jar", \
-    "-javaagent:/usr/local/atatus-java-agent.jar", \
-    # "-javaagent:/usr/local/elastic-apm-agent.jar", \
-    "-jar", \
-    "target/metrics-test-1.0.0.jar" \
-  ]
-  # ENTRYPOINT [ "./entrypoint.sh" ]
+  # ENTRYPOINT [ \
+  #   "java", \
+  #   "-javaagent:/usr/local/newrelic/newrelic.jar", \
+  #   "-javaagent:/usr/local/atatus-java-agent.jar", \
+  #   # "-javaagent:/usr/local/elastic-apm-agent.jar", \
+  #   "-jar", \
+  #   "target/metrics-test-1.0.0.jar" \
+  # ]
+  ENTRYPOINT [ "./entrypoint.sh" ]
 

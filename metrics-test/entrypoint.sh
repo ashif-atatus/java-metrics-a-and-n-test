@@ -10,17 +10,17 @@ java -javaagent:/usr/local/atatus-java-agent.jar \
       -jar target/metrics-test-1.0.0.jar \
      --server.port=5051 &
 
-# java -javaagent:/usr/local/atatus-java-agent.jar \
-#      -javaagent:/usr/local/newrelic/newrelic.jar \
-#      -Datatus.hostname="darkglance-2" \
-#       -jar target/metrics-test-1.0.0.jar \
-#      --server.port=5052 &
+java -javaagent:/usr/local/atatus-java-agent.jar \
+     -javaagent:/usr/local/newrelic/newrelic.jar \
+     -Datatus.hostname="darkglance-2" \
+      -jar target/metrics-test-1.0.0.jar \
+     --server.port=5052 &
 
-# java -javaagent:/usr/local/atatus-java-agent.jar \
-#      -javaagent:/usr/local/newrelic/newrelic.jar \
-#      -Datatus.hostname="darkglance-3" \
-#       -jar target/metrics-test-1.0.0.jar \
-#      --server.port=5053 &
+java -javaagent:/usr/local/atatus-java-agent.jar \
+     -javaagent:/usr/local/newrelic/newrelic.jar \
+     -Datatus.hostname="darkglance-3" \
+      -jar target/metrics-test-1.0.0.jar \
+     --server.port=5053 &
 
 # java -javaagent:/usr/local/atatus-java-agent.jar \
 #      -javaagent:/usr/local/newrelic/newrelic.jar \
