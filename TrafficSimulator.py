@@ -370,7 +370,7 @@ class TrafficSimulator:
 
 async def main():
     
-    TIME: int = 600
+    TIME: int = 1800
     BASE_URL: str = "http://localhost"  # Configurable base URL
 
     PORT_LOWER_LIMIT: int = 5051

@@ -34,6 +34,7 @@ services:
       context: ./metrics-test
       dockerfile: Dockerfile
     container_name: metrics-test-app-1
+    hostname: ceo-intern
     ports:
       - "5051:5051"
       - "5052:5052"
